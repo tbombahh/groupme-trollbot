@@ -22,10 +22,9 @@ app.route('/')
 
 			getResponses.get(observable => {
 				observable.subscribe(responses => {
-					const randomResponse = pickResponse(responses);
-
 					if (process.env.isProd) {
 						if (Math.random() < chanceOfResponding) {
+							const randomResponse = pickResponse(responses);
 							const request = require('request');
 							const reqObj = {
 								url: 'https://api.groupme.com/v3/bots/post',
@@ -43,6 +42,8 @@ app.route('/')
 							return res.json({ success: true, message: 'Did not send this time' });
 						}
 					} else {
+						const randomResponse = pickResponse(responses);
+
 						// If not prod, this will always send (for local testing purposes)
 						return res.json({ response: randomResponse });
 					}
