@@ -16,7 +16,7 @@ app.route('/')
 		// This will make it feel like the bot's actually replying to us
 		if (sender_type === 'user') {
 			// Low chance of success to prevent spamming the group ;)
-			const 	chanceOfResponding = 0.15,
+			const 	chanceOfResponding = 0.99,
 					getResponses = require('./responses'),
 					pickResponse = require('./pickResponse');
 
